@@ -1,16 +1,16 @@
 
 ## Usersテーブル
 
-| column          |  Type   | option      |
-|-----------------|---------|-------------|
-| nickname        | string  | null: false |
-| email           | string  | null: false |
-| password        | string  | null: false |
-| first_name      | string  | null: false |
-| last_name       | string  | null: false |
-| kana_first_name | string  | null: false |
-| kana_last_name  | string  | null: false |
-| birthday        | integer | null: false |
+| column             |  Type   | option      |
+|--------------------|---------|-------------|
+| nickname           | string  | null: false |
+| email              | string  | null: false |
+| encrypted_password | string  | null: false |
+| first_name         | string  | null: false |
+| last_name          | string  | null: false |
+| kana_first_name    | string  | null: false |
+| kana_last_name     | string  | null: false |
+| birthday           | integer | null: false |
 
 ### Association
 
