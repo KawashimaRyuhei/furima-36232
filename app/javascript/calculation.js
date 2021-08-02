@@ -1,7 +1,7 @@
 // const priceTextArea = document.getElementById("item-price")
 // console.log(priceTextArea)
 
-function post (){
+function input (){
   const priceInput = document.getElementById("item-price");
   priceInput.addEventListener("keyup", keyUp);
   function keyUp() {
@@ -12,5 +12,5 @@ function post (){
   };
 };
 
-window.addEventListener('load', post);
+window.addEventListener('load', input);
 
