@@ -12,7 +12,7 @@ class Item < ApplicationRecord
   with_options presence: true do
     validates :name
     validates :text
-    validates :image
+    validates :image, unless: :was_attached?
     validates :price, numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999}
   end
 
@@ -22,5 +22,11 @@ class Item < ApplicationRecord
     validates :delivery_fee_id
     validates :prefectures_id
     validates :shipment_day_id
+  end
+
+  private
+
+  def was_attached?
+    self.image.attached?
   end
 end
