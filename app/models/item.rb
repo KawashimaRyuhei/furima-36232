@@ -23,10 +23,4 @@ class Item < ApplicationRecord
     validates :prefectures_id
     validates :shipment_day_id
   end
-
-  # private
-
-  # def was_attached?
-  #   self.image.attached?
-  # end
 end
