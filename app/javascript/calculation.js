@@ -1,6 +1,3 @@
-// const priceTextArea = document.getElementById("item-price")
-// console.log(priceTextArea)
-
 function input (){
   const priceInput = document.getElementById("item-price");
   priceInput.addEventListener("keyup", keyUp);
@@ -13,4 +10,3 @@ function input (){
 };
 
 window.addEventListener('load', input);
-
