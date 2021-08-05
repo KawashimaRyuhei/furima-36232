@@ -7,7 +7,7 @@ class CreateSends < ActiveRecord::Migration[6.0]
       t.string      :address,         null: false
       t.string      :building_name,   null: false
       t.string      :telephone,       null: false
-      t.buy         :references,      null: false, foreign_key: true
+      t.references  :buy,             null: false, foreign_key: true
       t.timestamps
     end
   end
