@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_05_122333) do
+ActiveRecord::Schema.define(version: 2021_08_06_125200) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(version: 2021_08_05_122333) do
     t.index ["user_id"], name: "index_items_on_user_id"
   end
 
-  create_table "sends", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "transmits", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "postal_code", null: false
     t.integer "prefectures_id", null: false
     t.string "city", null: false
@@ -67,7 +67,7 @@ ActiveRecord::Schema.define(version: 2021_08_05_122333) do
     t.bigint "buy_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["buy_id"], name: "index_sends_on_buy_id"
+    t.index ["buy_id"], name: "index_transmits_on_buy_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -92,5 +92,5 @@ ActiveRecord::Schema.define(version: 2021_08_05_122333) do
   add_foreign_key "buys", "items"
   add_foreign_key "buys", "users"
   add_foreign_key "items", "users"
-  add_foreign_key "sends", "buys"
+  add_foreign_key "transmits", "buys"
 end

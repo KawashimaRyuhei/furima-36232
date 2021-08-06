@@ -47,9 +47,9 @@
 
 - belongs_to :user
 - belongs_to :item
-- has_one :send
+- has_one :transmit
 
-## Sendsテーブル
+## transmitsテーブル
 
 | column          | Type       | option                         |
 |-----------------|------------|--------------------------------|

@@ -1,4 +1,4 @@
-class BuySend
+class BuyTransmit
   include ActiveModel::Model
   attr_accessor :postal_code, :prefectures_id, :city, :address, :building_name, :telephone, :user_id, :item_id, :buy_id
 
@@ -12,6 +12,6 @@ class BuySend
 
   def save
     buy = Buy.create(user_id: user_id, item_id: item_id)
-    Send.create(postal_code: postal_code, prefectures_id: prefectures_id, city: city, address: address, building_name: building_name, telephone: telephone, buy_id: buy.id)
+    Transmit.create(postal_code: postal_code, prefectures_id: prefectures_id, city: city, address: address, building_name: building_name, telephone: telephone, buy_id: buy.id)
   end
 end
