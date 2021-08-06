@@ -8,7 +8,7 @@ class BuyTransmit
     validates :city, :address
     validates :telephone, format: {with: /\A^(0{1}\d{9,10})$\z/, message: "is invalid. Remove hyphen(-)"}
   end
-  validates :prefectures_id, numericality: {other_than: 0, message: "can't be blank"}
+  validates :prefectures_id, numericality: {other_than: 1, message: "can't be blank"}
 
   def save
     buy = Buy.create(user_id: user_id, item_id: item_id)
