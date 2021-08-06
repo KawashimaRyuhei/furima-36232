@@ -34,7 +34,7 @@
     <%= form_with model: @buy_transmit, url: item_buys_path(@buy), id: 'charge-form', class: 'transaction-form-wrap',local: true do |f| %>
     <%# カード情報の入力 %>
     <%# formkクレジット機能完成後修正 %>
-    <%# <%= render 'shared/error_messages' ,model: @buy %>
+    <%= render 'shared/error_messages' ,model: @buy_transmit %>
     <%# formkクレジット機能完成後修正 %>
 
     <div class='credit-card-form'>
