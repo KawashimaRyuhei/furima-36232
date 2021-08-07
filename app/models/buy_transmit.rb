@@ -1,6 +1,6 @@
 class BuyTransmit
   include ActiveModel::Model
-  attr_accessor :postal_code, :prefectures_id, :city, :address, :building_name, :telephone, :user_id, :item_id, :buy_id, :token,
+  attr_accessor :postal_code, :prefectures_id, :city, :address, :building_name, :telephone, :user_id, :item_id, :token,
                 :price
 
   with_options presence: true do
