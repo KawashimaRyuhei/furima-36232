@@ -3,7 +3,6 @@ class BuysController < ApplicationController
   before_action :find_params, only: [:index, :new, :create]
   before_action :move_to_index
 
-  
   def index
     @buy_transmit = BuyTransmit.new
   end
@@ -21,27 +20,26 @@ class BuysController < ApplicationController
 
   private
 
-
   def find_params
     @item = Item.find(params[:item_id])
   end
 
   def move_to_index
-    if current_user == @item.user || @item.buy.present? 
-      redirect_to root_path
-    end
+    redirect_to root_path if current_user == @item.user || @item.buy.present?
   end
 
   def buy_params
-    params.require(:buy_transmit).permit(:postal_code, :prefectures_id, :city, :address, :building_name, :telephone).merge(user_id: current_user.id, item_id: params[:item_id], token: params[:token], price: @item.price)
+    params.require(:buy_transmit).permit(:postal_code, :prefectures_id, :city, :address, :building_name, :telephone).merge(
+      user_id: current_user.id, item_id: params[:item_id], token: params[:token], price: @item.price
+    )
   end
 
   def pay_item
-    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+    Payjp.api_key = ENV['PAYJP_SECRET_KEY']
     Payjp::Charge.create(
       amount: buy_params[:price],
       card: buy_params[:token],
       currency: 'jpy'
-    )   
+    )
   end
 end

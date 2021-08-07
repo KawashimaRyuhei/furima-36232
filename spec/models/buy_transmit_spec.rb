@@ -25,59 +25,59 @@ RSpec.describe BuyTransmit, type: :model do
         @buy_transmit.valid?
         expect(@buy_transmit.errors.full_messages).to include("Token can't be blank")
       end
-      
+
       it 'postal_codeが空だと購入できない' do
         @buy_transmit.postal_code = ''
         @buy_transmit.valid?
-        expect(@buy_transmit.errors.full_messages).to include("Postal code can't be blank") 
+        expect(@buy_transmit.errors.full_messages).to include("Postal code can't be blank")
       end
-      
+
       it 'postal_codeが半角のハイフンを含んでいないと購入できない' do
         @buy_transmit.postal_code = '1234567'
         @buy_transmit.valid?
-        expect(@buy_transmit.errors.full_messages).to include("Postal code is invalid. Include hyphen(-)") 
+        expect(@buy_transmit.errors.full_messages).to include('Postal code is invalid. Include hyphen(-)')
       end
-      
+
       it 'prefecture_idを選択していないと購入できない' do
         @buy_transmit.prefectures_id = 1
         @buy_transmit.valid?
-        expect(@buy_transmit.errors.full_messages).to include("Prefectures can't be blank") 
+        expect(@buy_transmit.errors.full_messages).to include("Prefectures can't be blank")
       end
-      
+
       it 'cityが空だと購入できない' do
         @buy_transmit.city = ''
         @buy_transmit.valid?
-        expect(@buy_transmit.errors.full_messages).to include("City can't be blank") 
+        expect(@buy_transmit.errors.full_messages).to include("City can't be blank")
       end
-      
+
       it 'addressが空だと購入できない' do
         @buy_transmit.address = ''
         @buy_transmit.valid?
-        expect(@buy_transmit.errors.full_messages).to include("Address can't be blank")  
+        expect(@buy_transmit.errors.full_messages).to include("Address can't be blank")
       end
-      
+
       it 'telephoneが空だと購入できない' do
         @buy_transmit.telephone = ''
         @buy_transmit.valid?
-        expect(@buy_transmit.errors.full_messages).to include("Telephone can't be blank") 
+        expect(@buy_transmit.errors.full_messages).to include("Telephone can't be blank")
       end
-      
+
       it 'telephoneが半角のハイフンを含んでいると購入できない' do
         @buy_transmit.telephone = '090-1234-5678'
         @buy_transmit.valid?
-        expect(@buy_transmit.errors.full_messages).to include("Telephone is invalid. Remove hyphen(-)") 
+        expect(@buy_transmit.errors.full_messages).to include('Telephone is invalid. Remove hyphen(-)')
       end
-      
+
       it 'userと紐づいていないと購入できない' do
         @buy_transmit.user_id = nil
         @buy_transmit.valid?
-        expect(@buy_transmit.errors.full_messages).to include("User can't be blank") 
+        expect(@buy_transmit.errors.full_messages).to include("User can't be blank")
       end
 
       it 'itemと紐づいていないと購入できない' do
         @buy_transmit.item_id = nil
         @buy_transmit.valid?
-        expect(@buy_transmit.errors.full_messages).to include("Item can't be blank") 
+        expect(@buy_transmit.errors.full_messages).to include("Item can't be blank")
       end
     end
   end
