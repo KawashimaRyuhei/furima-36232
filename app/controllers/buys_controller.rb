@@ -1,5 +1,5 @@
 class BuysController < ApplicationController
-  before_action :authenticate_user! 
+  before_action :authenticate_user!
   before_action :find_params, only: [:index, :new, :create]
   before_action :move_to_index
 
@@ -26,11 +26,11 @@ class BuysController < ApplicationController
 
 
   def find_params
-    @buy = Item.find(params[:item_id])
+    @item = Item.find(params[:item_id])
   end
 
   def move_to_index
-    if params[:item_id].blank? || current_user == @buy.user
+    if current_user == @item.user || @item.buy.present? 
       redirect_to root_path
     end
   end
