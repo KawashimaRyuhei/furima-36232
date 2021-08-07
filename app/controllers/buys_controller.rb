@@ -1,6 +1,6 @@
 class BuysController < ApplicationController
   before_action :authenticate_user!
-  before_action :find_params, only: [:index, :new, :create]
+  before_action :find_params, only: [:index, :create]
   before_action :move_to_index
 
   def index

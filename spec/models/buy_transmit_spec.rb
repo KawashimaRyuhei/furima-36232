@@ -65,7 +65,19 @@ RSpec.describe BuyTransmit, type: :model do
       it 'telephoneが半角のハイフンを含んでいると購入できない' do
         @buy_transmit.telephone = '090-1234-5678'
         @buy_transmit.valid?
-        expect(@buy_transmit.errors.full_messages).to include('Telephone is invalid. Remove hyphen(-)')
+        expect(@buy_transmit.errors.full_messages).to include('Telephone is invalid. Please enter again')
+      end
+
+      it 'telephoneがtelephoneは12桁以上では登録できないこと' do
+        @buy_transmit.telephone = '0901234567890'
+        @buy_transmit.valid?
+        expect(@buy_transmit.errors.full_messages).to include('Telephone is invalid. Please enter again')
+      end
+
+      it 'telephoneは英数混合では登録できないこと' do
+        @buy_transmit.telephone = '090ABCDEFGH'
+        @buy_transmit.valid?
+        expect(@buy_transmit.errors.full_messages).to include('Telephone is invalid. Please enter again')
       end
 
       it 'userと紐づいていないと購入できない' do
