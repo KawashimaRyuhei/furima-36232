@@ -14,6 +14,7 @@ class BuysController < ApplicationController
   def create
     @buy_transmit = BuyTransmit.new(buy_params)
     if @buy_transmit.valid?
+      pay_item
       @buy_transmit.save
       redirect_to root_path
     else
@@ -35,12 +36,15 @@ class BuysController < ApplicationController
   end
 
   def buy_params
-    params.require(:buy_transmit).permit(:postal_code, :prefectures_id, :city, :address, :building_name, :telephone).merge(user_id: current_user.id, item_id: params[:item_id])
+    params.require(:buy_transmit).permit(:postal_code, :prefectures_id, :city, :address, :building_name, :telephone).merge(user_id: current_user.id, item_id: params[:item_id], token: params[:token], price: @buy.price)
   end
 
-  
-
-  
-
-
+  def pay_item
+    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+    Payjp::Charge.create(
+      amount: buy_params[:price],
+      card: buy_params[:token],
+      currency: 'jpy'
+    )   
+  end
 end

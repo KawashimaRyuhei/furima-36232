@@ -10,7 +10,7 @@ RSpec.describe BuyTransmit, type: :model do
     end
 
     context '内容に問題がない場合' do
-      it '全ての値が正しく入力されていれば保存できる' do        
+      it '全ての値が正しく入力されていれば保存できる' do
         expect(@buy_transmit).to be_valid
       end
       it 'building_nameは空でも保存できる' do
