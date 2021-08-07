@@ -8,9 +8,6 @@ class BuysController < ApplicationController
     @buy_transmit = BuyTransmit.new
   end
 
-  def new
-  end
-
   def create
     @buy_transmit = BuyTransmit.new(buy_params)
     if @buy_transmit.valid?
@@ -21,7 +18,7 @@ class BuysController < ApplicationController
       render :index
     end
   end
-    
+
   private
 
 
@@ -36,7 +33,7 @@ class BuysController < ApplicationController
   end
 
   def buy_params
-    params.require(:buy_transmit).permit(:postal_code, :prefectures_id, :city, :address, :building_name, :telephone).merge(user_id: current_user.id, item_id: params[:item_id], token: params[:token], price: @buy.price)
+    params.require(:buy_transmit).permit(:postal_code, :prefectures_id, :city, :address, :building_name, :telephone).merge(user_id: current_user.id, item_id: params[:item_id], token: params[:token], price: @item.price)
   end
 
   def pay_item
